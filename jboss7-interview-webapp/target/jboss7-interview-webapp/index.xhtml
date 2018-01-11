@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+        <h1>Welcome to Liaison!</h1>
+
+        <div>
+            <h3>Renown Data Company:</h3>
+            <img src="resources/gfx/liaisonlogo.png" />
+        </div>
+		     <script type="text/javascript" language="javascript" src="jquery.js">  
+		     
+			</script>
+        <h:form id="reg">
+            <h2>Liaison Technologies Software Developers</h2>
+            <p>Employee Management</p>
+            <h:panelGrid columns="3" columnClasses="titleCell">
+                <h:outputLabel for="name" value="Name:" />
+                <h:inputText id="name" value="#{newDeveloper.name}" />
+                <h:message for="name" errorClass="invalid" />
+                
+                <h:outputLabel for="languages" value="Programming Languages: " />
+                <h:inputText id="languages"
+                    value="#{newDeveloper.languages}" />
+                <h:message for="languages" errorClass="invalid" />
+                
+                <h:outputLabel for="manager" value="Manager : " />
+                <h:inputText id="manager"
+                    value="#{newDeveloper.manager}" />
+                <h:message for="manager" errorClass="invalid" />
+
+                <h:outputLabel for="email" value="Email:" />
+                <h:inputText id="email" value="#{newDeveloper.email}" />
+                <h:message for="email" errorClass="invalid" />
+
+                <h:outputLabel for="phoneNumber" value="Phone #:" />
+                <h:inputText id="phoneNumber"
+                    value="#{newDeveloper.phoneNumber}" />
+                <h:message for="phoneNumber" errorClass="invalid" />
+                
+            </h:panelGrid>
+
+            <p>
+                <h:panelGrid columns="2">
+                    <h:commandButton id="register"
+                        action="#{developerController.register}"
+                        value="Register" styleClass="register" />
+                    <h:messages styleClass="messages"
+                        errorClass="invalid" infoClass="valid"
+                        warnClass="warning" globalOnly="true" />
+                </h:panelGrid>
+            </p>
+        </h:form>
+        <h2>developers</h2>
+        <h:panelGroup rendered="#{empty developers}">
+            <em>No existing developers. Start Hiring.</em>
+        </h:panelGroup>
+        <h:dataTable var="_developer" value="#{developers}"
+            rendered="#{not empty developers}"
+            styleClass="simpletablestyle">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{_developer.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                #{_developer.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Languages</f:facet>
+                #{_developer.languages}
+            </h:column>
+             <h:column>
+                <f:facet name="header">Manager</f:facet>
+                #{_developer.manager}
+            </h:column>
+             <h:column>
+                <f:facet name="header">Email</f:facet>
+                #{_developer.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Phone #</f:facet>
+                #{_developer.phoneNumber}
+            </h:column>
+            <h:column>
+                <f:facet name="header">REST URL</f:facet>
+                <a
+                    href="#{request.contextPath}/rest/developers/#{_developer.id}">/rest/developers/#{_developer.id}</a>
+            </h:column>
+            <f:facet name="footer">
+            REST URL for all developers: <a
+                    href="#{request.contextPath}/rest/developers">/rest/developers</a>
+                     
+            </f:facet>
+        </h:dataTable>
+        <h4>You are here! How is the weather down there?</h4>
+    <div id="location">
+ 		</div>
+       
+    </ui:define>
+    
+                
+</ui:composition>
+
+
+

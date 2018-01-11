@@ -1,0 +1,9 @@
+org\jboss\tools\examples\data\DeveloperRepository.class
+org\jboss\tools\examples\rest\JaxRsActivator.class
+org\jboss\tools\examples\data\DeveloperListProducer.class
+org\jboss\tools\examples\model\Developer.class
+org\jboss\tools\examples\controller\DeveloperController.class
+org\jboss\tools\examples\model\Developer_.class
+org\jboss\tools\examples\service\DeveloperRegistration.class
+org\jboss\tools\examples\util\Resources.class
+org\jboss\tools\examples\rest\DeveloperResourceRESTService.class
